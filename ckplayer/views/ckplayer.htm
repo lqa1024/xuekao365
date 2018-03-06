@@ -1,0 +1,17 @@
+<script type="text/javascript">
+var videoinfo={
+	basehost:'{dede:global.cfg_basehost/}',
+	path:'{dede:global.cfg_cmsurl/}',
+	videourl:'{dede:field name="video_address"/}',
+	videourl_m:'{dede:field name="html5_address"/}',
+	title:'{dede:field.title/}',
+	litpic:'{dede:field.litpic/}',
+	arcurl:encodeURIComponent(window.location.href)
+}
+</script>
+{dede:field.video_address runphp='yes'}global $cfg_cmsurl;if(@me == ''){@me = '';}else{
+@me = '<script type="text/javascript" src="'.$cfg_cmsurl.'/ckplayer/static/js/offlights.js"></script>'.chr(13);
+@me .= '<script type="text/javascript" src="'.$cfg_cmsurl.'/ckplayer/static/player/ckplayer.js"></script>'.chr(13);
+@me .= '<script type="text/javascript">document.write("<div id=\"a1\" style=\"position:relative;z-index:100;clear:both;\"></div>")</script>'.chr(13);
+@me .= '<script type="text/javascript" src="'.$cfg_cmsurl.'/ckplayer/static/js/player_pc.js"></script>';}
+{/dede:field.video_address}

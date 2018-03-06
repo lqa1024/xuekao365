@@ -1,0 +1,74 @@
+<!--此处开始为增加的代码 实现返回顶部-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="dedecms.css">
+<style>
+body{
+	height:1000px;
+}
+.totop{
+	position:fixed;
+	right:300px;
+	bottom:50px;
+	display:block;
+	width:26px;
+	height:62px;
+	background:url(http://ooi7s4rfa.bkt.clouddn.com/rocket.png) no-repeat 0 0;
+	-webkit-transition: all 0.2s ease-in-out;
+}
+.totop:hover{
+	background:url(http://ooi7s4rfa.bkt.clouddn.com/rocket.png) no-repeat 0 -62px;
+}
+
+</style>
+<script type="text/javascript">
+	function gotoTop(acceleration,stime) {
+   acceleration = acceleration || 0.1;
+   stime = stime || 10;
+   var x1 = 0;
+   var y1 = 0;
+   var x2 = 0;
+   var y2 = 0;
+   var x3 = 0;
+   var y3 = 0; 
+   if (document.documentElement) {
+       x1 = document.documentElement.scrollLeft || 0;
+       y1 = document.documentElement.scrollTop || 0;
+   }
+   if (document.body) {
+       x2 = document.body.scrollLeft || 0;
+       y2 = document.body.scrollTop || 0;
+   }
+   var x3 = window.scrollX || 0;
+   var y3 = window.scrollY || 0;
+ 
+   var x = Math.max(x1, Math.max(x2, x3));
+   var y = Math.max(y1, Math.max(y2, y3));
+   var speeding = 1 + acceleration;
+   window.scrollTo(Math.floor(x / speeding), Math.floor(y / speeding));
+   if(x > 0 || y > 0) {
+       var run = "gotoTop(" + acceleration + ", " + stime + ")";
+       window.setTimeout(run, stime);
+   }
+}
+
+</script>
+<!--In The End-->
+</head>
+<!-- //底部模板 -->
+<body>
+<a href="#" onclick="gotoTop();return false;" class="totop"></a>
+<div class="footer w960 center mt1 clear">
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+	<div class="copyright">{dede:global.cfg_powerby/}&nbsp;&nbsp;{dede:global.cfg_beian/}</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+</body>
+</html>
+<!-- Only has div-->

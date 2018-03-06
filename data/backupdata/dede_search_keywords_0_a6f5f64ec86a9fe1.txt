@@ -1,0 +1,4 @@
+INSERT INTO `dede_search_keywords` VALUES('1','二级','二级','2','3','1497591397','0','0');
+INSERT INTO `dede_search_keywords` VALUES('2','在这里搜索...','在这里搜索... 在这里 搜索','1','0','1497591442','0','0');
+INSERT INTO `dede_search_keywords` VALUES('3','计算机三级','计算机三级 三级 计算机','1','1','1512528976','0','0');
+INSERT INTO `dede_search_keywords` VALUES('4','as','as','1','0','1514695061','0','0');

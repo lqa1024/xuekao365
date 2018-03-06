@@ -1,0 +1,916 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2015年全国计算等级考试三级网络技术真题及答案_学考网-- -- 大学生计算机应用学习平台</title>
+<meta name="keywords" content="2015,年全国,计算,等级考试,三级,网络技术,一," />
+<meta name="description" content="下 列 各 题 A 、 B、 C、 D 四 个 选 项 中 ，只 有 一 个 选 项 是 正 确 的 ，请 将 正 确 选 项 涂 写 在 答 题 卡 相 应 位 置 上 ， 答 在 试 卷 上 不 得 分 。" />
+<link href="/templets/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<meta http-equiv="mobile-agent" content="format=xhtml;url=/m/view.php?aid=153">
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="/m/view.php?aid=153";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script>
+<!--
+/*
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+*/
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+</script>
+</head>
+<body class="articleview">
+<!-- <div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/data/sitemap.html" target="_blank">网站地图</a>|<a href="/tags.php">TAG标签</a><a href="/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://120.78.76.168');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://120.78.76.168','学考网-- -- 大学生计算机应用学习平台')">加入收藏</a>]</span></div>
+    </div> 
+</div> -->
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://120.78.76.168"><img src="/templets/default/images/logo.png" height="54" width="216" alt="学考网-- -- 大学生计算机应用学习平台"/></a> </h1>
+      </div>
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/'><span>主页</span></a></li>
+      	
+      	<li><a href='/a/erjiCzhuanqu/'  rel='dropmenu18'><span>计算机二级</span></a></li>
+      	
+      	<li><a href='/a/sp/'  rel='dropmenu25'><span>视频学习</span></a></li>
+      	<li class='hover'><a href='/a/softweihu/' ><span>三级网络技术</span></a></li>
+      	<li><a href='/a/ruanjianxiazai/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='http://120.78.76.168/plus/guestbook.php' ><span>在线留言</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/tags.php?/Excel%EF%BC%8C/'>Excel，</a></li>
+          
+            <li><a href='/tags.php?/Excle%EF%BC%8C/'>Excle，</a></li>
+          
+            <li><a href='/tags.php?/Excle/'>Excle</a></li>
+          
+            <li><a href='/tags.php?/Excel/'>Excel</a></li>
+          
+            <li><a href='/tags.php?/ppt/'>ppt</a></li>
+          
+            <li><a href='/tags.php?/word/'>word</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://120.78.76.168/'>首页</a> > <a href='/a/softweihu/'>三级网络技术</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>2015年全国计算等级考试三级网络技术真题及答案</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2017-11-08 22:55<small>来源:</small>百度文库 <small>作者:</small>li <small>点击:</small>
+   <script src="/plus/count.php?view=yes&aid=153&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="intro">下 列 各 题 A 、 B、 C、 D 四 个 选 项 中 ，只 有 一 个 选 项 是 正 确 的 ，请  将 正 确 选 项 涂 写 在 答 题 卡 相 应 位 置 上 ， 答 在 试 卷 上 不 得 分   。</div>
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td>
+      <div>
+	<br />
+	一 、 选 择 题<br />
+	&nbsp;<br />
+	下 列 各 题 A 、 B、 C、 D 四 个 选 项 中 ，只 有 一 个 选 项 是 正 确 的 ，请&nbsp; 将 正 确 选 项 涂 写 在 答 题 卡 相 应 位 置 上 ， 答 在 试 卷 上 不 得 分&nbsp;&nbsp; 。<br />
+	<br />
+	(1) 我 国 互 联 网 界 曾 发 生 所 谓 3Q&nbsp; 大 战 ，根&nbsp; 据 你 的 了 解 它 们 发 生 在 哪 两 个 公 司&nbsp; 之 间 ?(D)<br />
+	<br />
+	A.3Com 与 百 度 之 间<br />
+	B.3Com&nbsp; 与 腾 讯 之 间<br />
+	C. 奇 虎 &nbsp;360与 百 度 之 间<br />
+	D. 奇 虎 &nbsp;360与 腾 讯 之 间<br />
+	<br />
+	(2)&nbsp; 我 国 早 期 批 量 生 产 的 计 算 机 是&nbsp; (B)<br />
+	&nbsp;<br />
+	A.103&nbsp;&nbsp; 计 算 机<br />
+	B.104 计 算 机<br />
+	C.DJS-130 &nbsp;计 算 机<br />
+	D.PDP-130 计 算 机<br />
+	<br />
+	(3)&nbsp; 关 于 客 户 机 的 描 述 中 ， 错 误 的 是&nbsp; (C)<br />
+	&nbsp;<br />
+	A. 智 能 手 机 不 能 用 作 客 户 机<br />
+	B. 平 板 电 脑 能 用 作 客 户 机&nbsp;<br />
+	C. 笔 记 本 电 脑 能 用 作 客 户 机<br />
+	D. 高 端 台 式 机 能 用 作 客 户 机<br />
+	<br />
+	(4)&nbsp; 关 于 笔 记 本 电 脑 配 置 的 描 述 中 ， 正 确 的 是&nbsp; (B)<br />
+	&nbsp;<br />
+	A. 必 须 用 &nbsp;Intel&nbsp;&nbsp;&nbsp; 双&nbsp; 核 奔 腾 芯 片<br />
+	B. 通 常 有 多 个&nbsp; USB&nbsp; 接 口<br />
+	C. 内 存 不 超 过&nbsp; 1GB&nbsp;<br />
+	D. 一 般 用 &nbsp;nVIDIA 网 卡<br />
+	&nbsp;<br />
+	(5)&nbsp; 关 于 软 件 的 描 述 中 ， 错 误 的 是&nbsp; (C)<br />
+	&nbsp;<br />
+	A. 系 统 软 件 比 应 用 软 件 更 贴 近 硬&nbsp; 件</div>
+<div>
+	B. 软 件 由 程 序 代 码 与 相 关 文 档 组&nbsp; 成<br />
+	C. 共 享 软 件 都 是 自 由 软 件<br />
+	D. 数 据 库 软 件 是 应 用 软 件<br />
+	&nbsp;<br />
+	(6)&nbsp; 关 于 多 媒 体 的 描 述 中 ， 正 确 的 是&nbsp; (D)<br />
+	&nbsp;<br />
+	A. 熵 编 码 属 于 有 损 压 缩<br />
+	B. 源 编 码 属 于 无 损 压 缩<br />
+	C. 有 损 压 缩 的 压 缩 比 小<br />
+	D. 无 损 压 缩 是 可 逆 的<br />
+	<br />
+	(7)&nbsp; 关 于&nbsp; OSI&nbsp; 参 考 模 型 的 描 述 中 ， 正 确 的 是 &nbsp;(B)<br />
+	&nbsp;<br />
+	A.OSI&nbsp;&nbsp; 参 考 模 型 由 &nbsp;IETF制 定<br />
+	B. 按 功 能 可 以 分 为 7 个 层 次<br />
+	C.OS 的 含 义 是 操 作 系 统 互 连<br />
+	D. 详 细 定 义 每 层 的 实 现 技 术<br />
+	<br />
+	(8)&nbsp; 在&nbsp; TCP/IP&nbsp;&nbsp;&nbsp; 参 考 模 型 中 ， 实 现 可 靠 到 端 通 信 的 层 次 是&nbsp; (D)<br />
+	&nbsp;<br />
+	A. 数 据 链 路 层<br />
+	B. 物 理 层<br />
+	C. 网 络 层<br />
+	D. 传 输 层<br />
+	<br />
+	(9)&nbsp; 以 太 网 帧 的 地 址 字 段 使 用 的 是&nbsp; (A)<br />
+	&nbsp;<br />
+	A.MAC&nbsp;&nbsp; 地 址<br />
+	B. IP&nbsp;&nbsp; 地 址<br />
+	C.&nbsp;&nbsp; 域 名<br />
+	D. 端 口 号<br />
+	&nbsp;<br />
+	(10)&nbsp; 关 于 无 线 自 组 网 的 描 述 中 ， 错 误 的 是 &nbsp;(B)<br />
+	&nbsp;<br />
+	A. 是 一 种 对 等 结 构 的 无 线 网 络<br />
+	B. 需 要 基 站 的 支 持<br />
+	C. 在 军 事 领 域 中 有 较 多 的 应 用</div>
+<div>
+	D. 可 用 &nbsp;WiFi&nbsp;&nbsp;&nbsp; 技 术 实 现 联 网<br />
+	&nbsp;<br />
+	(11)IEEE802.15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 标 准 针 对 的 网 络 是 (A)<br />
+	&nbsp;<br />
+	A. 无 线 个 人 区 域 网<br />
+	B. 无 线 传 感 器 网&nbsp;<br />
+	C. 无 线 宽 带 城 域 网<br />
+	D. 无 线 局 域 网<br />
+	<br />
+	(12)HTTP&nbsp;&nbsp;&nbsp;&nbsp; 使 用 的 著 名 端 口 号 是&nbsp; (C)<br />
+	&nbsp;<br />
+	A.21 B.25 C.80 D.110<br />
+	(13)&nbsp; 关 于 交 换 式 局 域 网 的 描 述 中 ， 正 确 的 是 &nbsp;(B)<br />
+	&nbsp;<br />
+	A. 采 用 共 享 介 质&nbsp;<br />
+	B. 核 心 设 备 是 交 换 机<br />
+	C. 只 支 持 半 双 工 通 信<br />
+	D.&nbsp;&nbsp; 只 支 持 &nbsp;1GpBs 速 率<br />
+	&nbsp;<br />
+	(14)&nbsp; 数 据 传 输 速 率 为 &nbsp;5&times;106bps&nbsp; ， 可 以 记 为 (D)<br />
+	&nbsp;<br />
+	A.5Gbps<br />
+	B.5kbps<br />
+	C.5Tbps<br />
+	D.5Mbps<br />
+	<br />
+	(15)&nbsp; 在 邮 件 服 务 器 之 间 实 现 邮 件 投 递 的 协 议 是 &nbsp;(C)<br />
+	&nbsp;<br />
+	A.IMAP<br />
+	B.TFTP<br />
+	C.SMTP<br />
+	D.RARP<br />
+	(16)&nbsp; 关 于 千 兆 以 太 网 的 描 述 中 ， 错 误 的 是 ： （&nbsp; A）</div>
+<br clear="all" />
+<div>
+	A. 只 支 持 光 纤 作 为 传 输 介 质<br />
+	B. 数 据 传 输 速 率 是&nbsp; 1Gbps<br />
+	C. 没 有 改 变 以 太 网 帧 的 结 构<br />
+	D. 协 议 标 准 时&nbsp;&nbsp; IEEE 802.3z<br />
+	&nbsp;<br />
+	(17)&nbsp; 在 网 络 协 议 中 ， 定 义 控 制 信 息 格 式 的 是 ： （&nbsp; D）<br />
+	&nbsp;<br />
+	A.&nbsp; 层 次<br />
+	B.&nbsp; 接 口<br />
+	C. 时 序<br />
+	D.&nbsp; 语 法<br />
+	&nbsp;<br />
+	(18)BitTorent &nbsp;支 持 的&nbsp; P2P&nbsp; 应 用 类 型 是 (B)<br />
+	&nbsp;<br />
+	A. 即 时&nbsp; 通 信<br />
+	B. 文 件 共 享<br />
+	C. 协 同&nbsp; 工 作<br />
+	D. 流 媒 体 传 输<br />
+	<br />
+	(19)&nbsp; 关 于 &nbsp;OSI&nbsp;&nbsp;&nbsp; 参 考 模 型 各 层 功 能 的 描 述 中 ， 正 确 的 是 ： &nbsp;(C)<br />
+	&nbsp;<br />
+	A. 应 用 层 实 现 介 质 访 问 控 制<br />
+	B. 物 理 层 实 现 域 名 解 析<br />
+	C. 网 络 层 实 现 路 由 选 择<br />
+	D. 会 话 层 定 义 各 种 网 络 服 务<br />
+	&nbsp;<br />
+	(20)&nbsp; 如 果 交 换 机 的 最 大 带 宽 为 &nbsp;8.4Gbps&nbsp; ，具&nbsp; 有&nbsp;&nbsp; 2&nbsp; 个 千 兆 的 全 双 工 端 口 ，则 其 百 兆 的 全 双 工 端 口 数 量 最 大 为 ： &nbsp;(A)<br />
+	A.22<br />
+	B.21<br />
+	C.20<br />
+	D.19<br />
+	<br />
+	(21)100BASE-TX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 标 准 支 持 的 传 输 介 质 是 ： &nbsp;(D)<br />
+	&nbsp;<br />
+	A. 单 模 光 纤</div>
+<div>
+	B. 红 外&nbsp; 线<br />
+	C. 同 轴 电 缆<br />
+	D. 双 绞 线<br />
+	<br />
+	(22)&nbsp; 关 于 网 络 拓 扑 结 构 的 描 述 中 ， 错 误 的 是 ： &nbsp;(C)<br />
+	&nbsp;<br />
+	A. 星 型 拓 扑 存 在 中 心 结 点&nbsp;&nbsp;<br />
+	B. 网 状 拓 扑 是 无 规 则 的 拓 扑<br />
+	C. 环 型 拓 扑 传 输 延 时 不 确 定<br />
+	D. 广 域 网 大 多 采 用 网 状 拓 扑<br />
+	<br />
+	(23)&nbsp; 跳 频 扩 频 的 英 文 缩 写 是 ：&nbsp; (D)<br />
+	&nbsp;<br />
+	A.WLAN<br />
+	B.VLAN<br />
+	C.DSSS<br />
+	D.FHSS<br />
+	<br />
+	(24)&nbsp; 关 于 操 作 系 统 的 描 述 中 ， 错 误 的 是 ： &nbsp;(C)<br />
+	&nbsp;<br />
+	A. 通 过 文 件 表 查 找 文 件<br />
+	B. 文 件 句 柄 是 文 件 的 识 别 依 据&nbsp;<br />
+	C. 内 存 管 理 通 过 文 件 系 统 实 现<br />
+	D. 基 本 驱 动 程 序 固 化 在 &nbsp;BIOS中<br />
+	(25)&nbsp; 关 于 进 城 与 线 程 的 描 述 中 ， 正 确 的 是 ：&nbsp; (B)<br />
+	&nbsp;<br />
+	A. 进 城 与 线 程 是 相 同 的 概 念<br />
+	B. 进 程 需 要 存 储 空 间<br />
+	C. 一 个 线 程 可 包 含 多 个 进 程<br />
+	D. 线 程 不 需 要 分 时 器 切 换<br />
+	&nbsp;<br />
+	(26)&nbsp; 关 于 &nbsp;Unix&nbsp;&nbsp;&nbsp; 操 作 系 统 的 描 述 中 ， 错 误 的 是 &nbsp;(C)<br />
+	&nbsp;<br />
+	A. 属 于 多 用 户 操 作 系 统&nbsp;<br />
+	B. 由 内 核 与 外 壳 组 成<br />
+	C. 内 核 的 操 作 原 语 对 硬 件 不 起 作 用</div>
+<div>
+	D. 主 要 用&nbsp; C 语 言 写&nbsp; 成<br />
+	&nbsp;<br />
+	(27)&nbsp; 关 于 &nbsp;Linux&nbsp; 操 作 系 统 的 描 述 中 ， 正 确 的 是 ： &nbsp;(D)<br />
+	&nbsp;<br />
+	A.&nbsp; 内 核 直 接 取 自 &nbsp;Unix<br />
+	B.&nbsp; 为 &nbsp;Unix 的 变 种<br />
+	C. 图 形 界 面 只 有&nbsp; KDE<br />
+	D. 符 合 &nbsp;POSIX 标 准<br />
+	&nbsp;<br />
+	(28)&nbsp; 关 于 &nbsp;WindowsServer 2008&nbsp;&nbsp;&nbsp;&nbsp; 操 作 系 统 的 描 述 中 ， 错 误 的 是 ： &nbsp;(D)<br />
+	&nbsp;<br />
+	A. 系 统 集 成 &nbsp;IIS 服 务<br />
+	B. 虚 拟 化 采 用&nbsp; Hypervisor 软 件 层<br />
+	C. 系 统 体 现 了 动 态 IT 技 术 的 趋 势<br />
+	D. 采 用 基 于 模 拟 器 的 虚 拟 化 技&nbsp; 术<br />
+	<br />
+	(29)&nbsp; 关 于 &nbsp;Internet 的 描 述 中 ， 正 确 的 是 ： &nbsp;(A)<br />
+	&nbsp;<br />
+	A.Internet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是 一 个 信 息 资 源 网<br />
+	B.Internet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是 一 个 内 部 网<br />
+	C. 中 继 器 是 &nbsp;Internet 中 的 主 要 设 备<br />
+	D.IPX&nbsp;&nbsp; 是 &nbsp;Internet&nbsp;&nbsp; 使 用 的 主 要 协 议<br />
+	&nbsp;<br />
+	(30)&nbsp; 关 于 &nbsp;ADSL&nbsp; 接 入 的 描 述 中 ， 正 确 的 是 ： &nbsp;(A)<br />
+	&nbsp;<br />
+	A. 数 据 传 输 需 要 进 行 调 制 解 调&nbsp;<br />
+	B. 传 输 介 质 采 用 同 轴 电 缆<br />
+	C. 只 支 持 &nbsp;TCP/IP&nbsp;&nbsp;&nbsp;&nbsp; 网 络<br />
+	D. 上 行&nbsp; 速 率 通&nbsp; 常 大 于&nbsp; 下 行 速&nbsp; 率<br />
+	<br />
+	(31)UDP&nbsp;&nbsp;&nbsp; 服 务 的 特 点 之 一 为 ：&nbsp; （ A）<br />
+	<br />
+	A. 不 可 靠<br />
+	B.Qos<br />
+	C. 面 向 连 接<br />
+	D.&nbsp; 有 序<br />
+	&nbsp;<br />
+	(32)&nbsp; 关 于&nbsp; IP&nbsp; 抵 制 的 描 述 中 ， 错 误 的 是 ：&nbsp;&nbsp; (A)</div>
+<br clear="all" />
+<div>
+	A.IP&nbsp;&nbsp; 地 址 可 以 代 替&nbsp;&nbsp; MAC&nbsp; 地 址<br />
+	B. 一 条 物 理 连 接 可 以 绑 定 多 个&nbsp; IP&nbsp; 地&nbsp; 址<br />
+	C.IP&nbsp;&nbsp; 地 址 携 带 地 理 位 置 信 息<br />
+	D.IP&nbsp;&nbsp; 地 址 由&nbsp; 32&nbsp; 位 二 进 制 数 组 &nbsp;成<br />
+	&nbsp;<br />
+	(33)&nbsp; 如 果 一 台 主 机 的&nbsp;&nbsp; IP&nbsp; 地 址 为 &nbsp;201.23.34.162&nbsp;&nbsp;&nbsp; ， 子 网 掩 码 为<br />
+	255.255.255.192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ， 那 么 它 所 处 的 网 络 ( 包 括 子 网 ) 为 ： （ A）<br />
+	&nbsp;<br />
+	A.201.23.34.128 B.201.23.34.192 C.201.23.34.224 D.201.23.34.240<br />
+	(34)&nbsp; 在 以 太 网 中 ， 使 用&nbsp; ARP&nbsp; 协 议 的 目 的 是 ： （&nbsp; B）<br />
+	&nbsp;<br />
+	A. 获 取 端 口 和&nbsp;&nbsp; IP&nbsp; 地 址 的 对 应 关 系<br />
+	B. 获 取 IP 地 址 和 MAC&nbsp; 地 址 的 对 应 关 系&nbsp;<br />
+	C. 获 取&nbsp;&nbsp; MAC&nbsp; 地 址 和&nbsp; 端 口 的&nbsp; 对 应 关&nbsp; 系<br />
+	D. 获 取&nbsp;&nbsp; IP&nbsp; 地 址 和 域 名 的 对 应 关 系<br />
+	<br />
+	(35)&nbsp; 在 对&nbsp; IP&nbsp; 数 据 报 进 行 分 片 时 ，分&nbsp;&nbsp; 片 报 头 与 源 报 文 报 头 一 定 相 同 的 字 段 为&nbsp;&nbsp; ：（A）<br />
+	&nbsp;<br />
+	A. 源 &nbsp;IP 地 址<br />
+	B. 头 部 校 验 和<br />
+	C. 标 志<br />
+	D. 总 长 度<br />
+	&nbsp;<br />
+	(36)&nbsp; 下 表 为 一 路 由 器 的 路 由 表 ， 如 果 该 路 由 器 接 收 到 源 地&nbsp;&nbsp; &nbsp;址 为 &nbsp;10.2.56.79 ， 目 的&nbsp; IP&nbsp; 地 址 为 &nbsp;10.1.1.28 的&nbsp;&nbsp; IP&nbsp; 数 据 报 ， 那 么 它 将 把 该 数 据 报 投 递 到 ： （ D）<br />
+	子 网 掩 码 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 要 到 达 的 网 络 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;下 一 路 由 器<br />
+	&nbsp;<br />
+	&nbsp;<br />
+	255.255.0.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.2.0.0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 直 接 投 递<br />
+	&nbsp;<br />
+	&nbsp;<br />
+	255.255.0.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.3.0.0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 直 接 投 递</div>
+<br clear="all" />
+<div>
+	255.255.0.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.1.0.0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 10.2.0.5<br />
+	&nbsp;<br />
+	255.255.0.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.4.0.0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 10.3.0.7<br />
+	<br />
+	&nbsp;<br />
+	A.10.3.1.28<br />
+	B.10.2.56.79<br />
+	C.10.3.0.7&nbsp;<br />
+	D.10.2.0.5<br />
+	&nbsp;<br />
+	(37) 在 发 送 IP&nbsp; 数 据 报 时&nbsp; ， 如 果 用 户 想&nbsp; 记 录 该&nbsp; IP&nbsp; 数 据 报 穿 过 互 联&nbsp; 网 的 路 径 ，&nbsp; 那 么 可 以 使 用 的&nbsp; IP&nbsp; 数 据 报 选 项 为 ： （&nbsp; B）<br />
+	<br />
+	A. 源 路 由 选 项<br />
+	B. 记 录 路 由 选 项<br />
+	C. 源 抑&nbsp; 制 选 项<br />
+	D. 重 定 向 选 项<br />
+	(38)&nbsp; 在 一 个 大 型 互 联 网 中 ， 动 态 刷 新 路 由 器 的 路 由 表 可 以 使 用 的 协&nbsp;&nbsp;&nbsp; 议 为 ：（B）<br />
+	&nbsp;<br />
+	A.TELNET<br />
+	B.OSPF<br />
+	C.SIP<br />
+	D.IGMP<br />
+	<br />
+	(39)IPv6&nbsp;&nbsp;&nbsp;&nbsp; 地 址 的 长 度 为 ： （ D）<br />
+	&nbsp;<br />
+	A.32&nbsp;&nbsp; 位&nbsp;<br />
+	B.48&nbsp;&nbsp; 位&nbsp;<br />
+	C.64&nbsp;&nbsp; 位<br />
+	D.128&nbsp;&nbsp; 位<br />
+	&nbsp;<br />
+	(40)&nbsp; 关 于 &nbsp;Internet 域 名 服 务 系 统 的 描 述 中 ， 正 确 的 是 ： （ B）<br />
+	&nbsp;<br />
+	A. 域 名 解 析 的 两 种 方 式 为 重 复 解 析 和 反 复 解 &nbsp;析<br />
+	B. 域 名 解 析 可 以 从 根 域 名 服 务 器 开&nbsp; 始<br />
+	C.&ldquo;非 权 威 &rdquo;的 解 析 结 果 是 由 解 析 器 造 成 的<br />
+	D. 使 用 高 速 缓 冲 技 术 可 提 高 域 名 解 析 的 准 确 &nbsp;性</div>
+<br clear="all" />
+<div>
+	(41)&nbsp; 关 于&nbsp; FTP&nbsp; 服 务 的 描 述 中 ， 错 误 的 是 ：&nbsp; （ B）<br />
+	&nbsp;<br />
+	A. 数 据 连 接 分 为 主 动 模 式 与 被 动 模 式<br />
+	B. 控 制 连 接 分 为 递 归 模 式 与 反 复 模 式<br />
+	C. 数 据 连 接 通 常 使 用 TCP&nbsp; 的&nbsp; 20&nbsp; 端 口<br />
+	D. 控 制 连 接 通 常 使 用&nbsp;&nbsp; TCP&nbsp; 的&nbsp; 21&nbsp; 端 口<br />
+	<br />
+	(42) &nbsp;在 &nbsp;发 送 哪 条 &nbsp;POP3&nbsp;&nbsp;&nbsp; 命 令 之 后 ， 系 统 对 指 &nbsp;定 的 邮 &nbsp;件 做 &ldquo;删 除 &rdquo;标 记 ?（ A）<br />
+	<br />
+	A.DELE<br />
+	B. QUIT<br />
+	C.LIST<br />
+	D.RETR<br />
+	<br />
+	二 、 填 空 题<br />
+	&nbsp;<br />
+	请 将 每 个 空 的 正 确 答 案 写 在 答 题 卡 【 1 】 - 【 20 】 序 号 位 置 上 ， 答 在 试 卷 上 不 得 分 。<br />
+	(1)&nbsp; 高 速 缓 存 的 哈 弗 结 构 是 把 指 令 与 【 数据&nbsp; 】 分 别 存 储 。<br />
+	(2)&nbsp; 软 件 生 命 周 期 包 括 计 划 阶 段 、 开 发 阶 段 和 【 运行&nbsp; 】 阶 段 。<br />
+	(3) &nbsp;在 &nbsp;OSI 参 考 模 型 中 ，与&nbsp; &nbsp;TCP /IP参 考 模 型 的 互 联 层 对 应 的 是【 网络层】 。<br />
+	(4) 计 算 机 网 络 是 以 能 相 互 【 共享 】 资 源 方 式 互 联 起 来 的 自 治 计 算 机 的 集 合 。<br />
+	(5)&nbsp; 根 据 路 由 选 择 策 略 ， 网 桥 分 为 【 透明&nbsp; 】 和 源 路 由 网 桥 。<br />
+	(6)&nbsp; 在 以 太 网 帧 结 构 中 ， 帧 前 定 界 符 为 &nbsp;【 10101011】 ( 请 用 二 进 制 数 表 示 ) 。<br />
+	(7) &nbsp;支 持 单 模 光 纤 的 千 兆 以 太 网 的 物 理 层 标 准 是【 1000BASE-LX 08 】。 &nbsp;<br />
+	(8)&nbsp; 在 数 据 传 输 系 统 中 ，表 示 二 进 制 数 据 传 输 出 错 概 率 的&nbsp; &nbsp;是【&nbsp;误码率】。<br />
+	(9)Novell&nbsp;&nbsp;&nbsp;&nbsp; 公 司 曾 经 红 极 一 时 的 网 络 操 作 系 统 称 为 &nbsp;【 NetWare &nbsp; &nbsp; 】 。</div>
+(10)Winows Server 2003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 的 基 本 管 理 单 位 是 【 域 】 。<br />
+(11)&nbsp; 如 果 某 主 机 需 要 向 子 网 掩 码 &nbsp;为 &nbsp;255.255.0.0 的 &nbsp;185.93.12.0 网 络 进 行 直 接 广 播 ， 那 么 它 应 使 用 的 目 的&nbsp; IP&nbsp; 地 址 为 &nbsp;【 185.93.255.255 &nbsp; 】 。<br />
+(12)&nbsp; 为 了 保 护 自 己 的 计 算 机 免 受 不 安 全 软 件 的 危 害 ， IE&nbsp; 通&nbsp; &nbsp;常 将 &nbsp;Internet划 分 为 &nbsp;Internet 区 域 、 本 地【&nbsp;Intranet 】区 域 、 可 信 站 点 区 域 和 受 限 站 点 &nbsp;区域 。<br />
+(13)IPv6&nbsp;&nbsp;&nbsp;&nbsp; 的 数 据 报 的 基 本 头 部 长 度 为 【 40 】 字 节 。<br />
+(14) 在 域 名 系 统 中 ， 用 于 标 识 配 件 交 换 机 的 对 象 类 型 为 【 MX 】 。<br />
+(15)TELNET&nbsp;&nbsp;&nbsp;&nbsp; 服 务 器 通 常 在&nbsp; TCP&nbsp; 的 【 23 】 端 口 慎 听 客 户 端 的 连 接 请 求 。<br />
+(16)&nbsp; 配 置 管 理 功 能 包 括 资 源 清 单 管 理 、 资 源 开 通 和 【 业务&nbsp; 】 开 通 。<br />
+&nbsp;(17)&nbsp; 故 障 影 响 到 有 质 量 保 证 承 诺 的 业 务 时 ， 故 障 管 理 要&nbsp; &nbsp;与【 计费】管 理<br />
+互 通 ， 以 赔 偿 用 户 的 损 失&nbsp; 。<br />
+(18)&nbsp; 百 度 的 超 链 分 析 技 术 基 于 网 页 质 量 的 排 序 和&nbsp; &nbsp;【 相关性】 的 排 序 。<br />
+(19) 在 &nbsp;VOIP的 系 统 中 ， 【 网守 】 负 责 用 户 的 注 册 与 管 理 。<br />
+(20)IPv4&nbsp;&nbsp;&nbsp;&nbsp; 组 播 地 址 以&nbsp; 4&nbsp; 位 二 进 制 开 始 ， 它 们 是 &nbsp;【 1110 】 。<br />
+
+      
+      (责任编辑：zhang)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+
+<center></center>
+  
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',153)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',153)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(153);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：没有了 </li>
+     <li>下一篇：<a href='/a/softweihu/2017/1105/156.html'>三级网络技术-前言</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/plus/stow.php?aid=153" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/plus/erraddsave.php?aid=153&title=2015年全国计算等级考试三级网络技术真题及答案" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/plus/recommend.php?aid=153" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yODg4Ny81NDU3" class="container">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+<!--评论区注释-->
+ <!-- //AJAX评论区 -->
+ <!-- //主模板必须要引入/include/dedeajax2.js -->
+<!--
+<a name='postform'></a>
+<div class="mt1">
+		<dl class="tbox">
+			<dt>
+				<strong>发表评论</strong>
+				<span class="more"></span>
+			</dt>
+			<dd>
+				<div class="dede_comment_post">
+          <form action="#" method="post" name="feedback">
+          <input type="hidden" name="dopost" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="153" />
+          <input type="hidden" name="fid" id='feedbackfid' value="0" />
+          <div class="dcmp-title">
+						<small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small>
+					</div>
+					-->
+					<!-- /dcmp-title -->
+					<!--
+					<div class="dcmp-stand">
+						<strong>评价:</strong>
+							<input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu" /><label for="dcmp-stand-neu"><img src="/templets/default/images/cmt-neu.gif" />中立</label>
+							<input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good" /><label for="dcmp-stand-good"><img src="/templets/default/images/cmt-good.gif" />好评</label>
+							<input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad" /><label for="dcmp-stand-bad"><img src="/templets/default/images/cmt-bad.gif" />差评</label>
+					</div>
+					-->
+					<!-- /dcmp-stand -->
+					<!--
+                    <div class="clr"></div>
+                    <div class="dcmp-mood">
+						<strong>表情:</strong>
+						<ul>            
+								                   
+						</ul>
+					</div>
+					-->
+					<!-- /dcmp-mood -->
+					<!--
+					<div class="dcmp-content">
+						<textarea cols="60" name="msg" rows="5" class="ipt-txt"></textarea>
+					</div>
+					-->
+					<!-- /dcmp-content -->
+					<!--
+					<div class="dcmp-post">
+					-->
+					<!--未登陆-->
+					<!--
+							<div class="dcmp-userinfo" id="_ajax_feedback">
+								用户名:<input type="text" name="username" size="16" class="ipt-txt" style="text-transform: uppercase;"/>
+                                验证码:<input type="text" name="validate" size="4" class="ipt-txt" style="text-transform:uppercase;"/><img src= "/include/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src=this.src+\'?\'" title="点击我更换图片" alt="点击我更换图片" />
+                <input type="checkbox" name="notuser" id="dcmp-submit-guest" /><label for="dcmp-submit-guest" />匿名? </label>
+							</div>
+              
+							<div class="dcmp-submit">
+								<button type="button" onClick='PostComment()'>发表评论</button>
+							</div>
+						</div>
+        </form>
+				</div>
+			</dd>
+		</dl>
+	</div>
+	-->
+	<!-- //评论表单区结束 -->
+
+<!-- //评论内容区 -->
+<!--
+	<a name='commettop'></a>
+	<div class="mt1">
+			<dl class="tbox">
+				<dt>
+					<strong>最新评论</strong>
+					<span class="more"><a href="/plus/feedback.php?aid=153">进入详细评论页&gt;&gt;</a></span>
+				</dt>
+-->
+				<!-- //这两个ID的区块必须存在，否则JS会出错 -->
+				<dd id='commetcontentNew'></dd>
+				<dd id='commetcontent'></dd>
+				<!--
+			</dl>
+	</div>
+	-->
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language='javascript'>
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/plus/feedback_ajax.php?dopost=getlist&aid=153&page="+page);
+		DedeXHTTP = null;
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+		if(f.msg.value=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(f.msg.value.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+		
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '153');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', f.msg.value);
+		myajax.SendPost2('/plus/feedback_ajax.php');
+		f.msg.value = '';
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+}
+function quoteCommet(fid)
+{
+	document.feedback.fid.value = fid;
+}
+LoadCommets(1);
+</script><!-- //评论内容区结束 --> </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<!--
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/a/softweihu/2017/0803/153.html">2015年全国计算等级考试三级网络技</a>
+       <p>下 列 各 题 A 、 B、 C、 D 四 个 选 项 中 ，只 有 一 个 选 项 是...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/158.html">三级网络技术第1章 网络系统结构与</a>
+       <p>...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/174.html">三级网络技术第4章 路由设计基础</a>
+       <p>...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/176.html">三级网络技术第5章 局域网技术20</a>
+       <p>...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/179.html">三级网络技术第6章 交换机及其配置</a>
+       <p>...</p>
+      </li>
+<li><a href="/plus/view.php?aid=184">三级网络技术第7章路由器及其配置</a>
+       <p>...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  -->
+  <!-- /commend -->
+  <div class="pright">
+   <dl class="tbox">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/a/softweihu/2017/0803/153.html">2015年全国计算等级考试三</a></li><li><a href="/a/softweihu/2017/1105/158.html">三级网络技术第1章 网络系</a></li><li><a href="/a/softweihu/2017/1105/173.html">三级网络技术第4章 路由设</a></li><li><a href="/a/softweihu/2017/1105/174.html">三级网络技术第4章 路由设</a></li><li><a href="/a/softweihu/2017/1105/176.html">三级网络技术第5章 局域网</a></li><li><a href="/a/softweihu/2017/1105/179.html">三级网络技术第6章 交换机</a></li><li><a href="/plus/view.php?aid=184">三级网络技术第7章路由器</a></li><li><a href="/a/softweihu/2017/1105/185.html">三级网络技术第7章路由器</a></li><li><a href="/a/softweihu/2017/1105/186.html">三级网络技术第7章路由器</a></li><li><a href="/a/softweihu/2017/1105/187.html">三级网络技术第8章 无线局</a></li>
+     </ul>
+    </dd>
+   </dl>
+   </div>
+ <!-- /pright -->
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"></div>
+<!--此处开始为增加的代码 实现返回顶部-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="dedecms.css">
+<style>
+body{
+	height:1000px;
+}
+.totop{
+	position:fixed;
+	right:300px;
+	bottom:50px;
+	display:block;
+	width:26px;
+	height:62px;
+	background:url(http://ooi7s4rfa.bkt.clouddn.com/rocket.png) no-repeat 0 0;
+	-webkit-transition: all 0.2s ease-in-out;
+}
+.totop:hover{
+	background:url(http://ooi7s4rfa.bkt.clouddn.com/rocket.png) no-repeat 0 -62px;
+}
+
+</style>
+<script type="text/javascript">
+	function gotoTop(acceleration,stime) {
+   acceleration = acceleration || 0.1;
+   stime = stime || 10;
+   var x1 = 0;
+   var y1 = 0;
+   var x2 = 0;
+   var y2 = 0;
+   var x3 = 0;
+   var y3 = 0; 
+   if (document.documentElement) {
+       x1 = document.documentElement.scrollLeft || 0;
+       y1 = document.documentElement.scrollTop || 0;
+   }
+   if (document.body) {
+       x2 = document.body.scrollLeft || 0;
+       y2 = document.body.scrollTop || 0;
+   }
+   var x3 = window.scrollX || 0;
+   var y3 = window.scrollY || 0;
+ 
+   var x = Math.max(x1, Math.max(x2, x3));
+   var y = Math.max(y1, Math.max(y2, y3));
+   var speeding = 1 + acceleration;
+   window.scrollTo(Math.floor(x / speeding), Math.floor(y / speeding));
+   if(x > 0 || y > 0) {
+       var run = "gotoTop(" + acceleration + ", " + stime + ")";
+       window.setTimeout(run, stime);
+   }
+}
+
+</script>
+<!--In The End-->
+</head>
+<!-- //底部模板 -->
+<body>
+<a href="#" onclick="gotoTop();return false;" class="totop"></a>
+<div class="footer w960 center mt1 clear">
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+	<div class="copyright">Copyright &学考网; 2017&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+</body>
+</html>
+<!-- Only has div-->
+<!-- /footer -->
+<script type="text/javascript">
+var contentRtPicAD2      = document.getElementById("contentRtPicAD2");
+var   stop      = contentRtPicAD2.offsetTop - 60,
+    docBody   = document.documentElement || document.body.parentNode || document.body,
+    hasOffset = window.pageYOffset !== undefined,
+    scrollTop;
+window.onscroll = function (e) {
+  // cross-browser compatible scrollTop.
+  scrollTop = hasOffset ? window.pageYOffset : docBody.scrollTop;
+
+  if (scrollTop >= stop) {
+    contentRtPicAD2.className = 'stick';
+  } else {
+    contentRtPicAD2.className = ''; 
+  }
+}
+</script>
+ <a style="position:relative; right:50px; top: 350px;"  target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=867560846&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:867560846:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+</body>
+</html>

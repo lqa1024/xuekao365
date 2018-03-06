@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>三级网络技术-前言_学考网-- -- 大学生计算机应用学习平台</title>
+<meta name="keywords" content="三级,网络技术,前言," />
+<meta name="description" content="" />
+<link href="/templets/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<meta http-equiv="mobile-agent" content="format=xhtml;url=/m/view.php?aid=156">
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="/m/view.php?aid=156";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script>
+<!--
+/*
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+*/
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+</script>
+</head>
+<body class="articleview">
+<!-- <div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">织梦CMS - 轻松建站从此开始！</span>
+     <div class="toplinks"><a href="/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="/data/sitemap.html" target="_blank">网站地图</a>|<a href="/tags.php">TAG标签</a><a href="/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href=""onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://120.78.76.168');">设为首页</a>] [<a href="javascript:window.external.AddFavorite('http://120.78.76.168','学考网-- -- 大学生计算机应用学习平台')">加入收藏</a>]</span></div>
+    </div> 
+</div> -->
+<div class="header">
+	<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://120.78.76.168"><img src="/templets/default/images/logo.png" height="54" width="216" alt="学考网-- -- 大学生计算机应用学习平台"/></a> </h1>
+      </div>
+	</div><!-- //top -->
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    	<!-- //如果不使用currentstyle，可以在channel标签加入 cacheid='channeltoplist' 属性提升性能 -->
+    <div id="navMenu">
+    	<ul>
+      	<li><a href='/'><span>主页</span></a></li>
+      	
+      	<li><a href='/a/erjiCzhuanqu/'  rel='dropmenu18'><span>计算机二级</span></a></li>
+      	
+      	<li><a href='/a/sp/'  rel='dropmenu25'><span>视频学习</span></a></li>
+      	<li class='hover'><a href='/a/softweihu/' ><span>三级网络技术</span></a></li>
+      	<li><a href='/a/ruanjianxiazai/' ><span>软件下载</span></a></li>
+      	
+      	<li><a href='http://120.78.76.168/plus/guestbook.php' ><span>在线留言</span></a></li>
+      	
+    	</ul>
+    </div>	
+    <div class="search">
+      <form  name="formsearch" action="/plus/search.php">
+        <div class="form">
+          <h4>搜索</h4>
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text" class="search-keyword" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+           <select name="searchtype" class="search-option" id="search-option">
+               <option value="title" selected='1'>检索标题</option>
+               <option value="titlekeyword">智能模糊</option>
+           </select>
+          <button type="submit" class="search-submit">搜索</button>
+        </div>
+        </form>
+        <div class="tags">
+          <h4>热门标签:</h4>
+          <ul>
+          
+            <li><a href='/tags.php?/Excel%EF%BC%8C/'>Excel，</a></li>
+          
+            <li><a href='/tags.php?/Excle%EF%BC%8C/'>Excle，</a></li>
+          
+            <li><a href='/tags.php?/Excle/'>Excle</a></li>
+          
+            <li><a href='/tags.php?/Excel/'>Excel</a></li>
+          
+            <li><a href='/tags.php?/ppt/'>ppt</a></li>
+          
+            <li><a href='/tags.php?/word/'>word</a></li>
+          
+          </ul>
+        </div>
+    </div><!-- //search -->
+		</div>
+	</div>
+</div><!-- //header -->
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href='http://120.78.76.168/'>首页</a> > <a href='/a/softweihu/'>三级网络技术</a> >  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>三级网络技术-前言</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2017-11-05 17:39<small>来源:</small>未知 <small>作者:</small>li <small>点击:</small>
+   <script src="/plus/count.php?view=yes&aid=156&mid=1" type='text/javascript' language="javascript"></script>
+   次</div>
+  <!-- /info -->
+  
+  <div class="content">
+   <table width='100%'>
+    <tr>
+     <td>
+      <iframe frameborder="0" height="600" scrolling="no" src="http://player.youku.com/embed/XMzEzNTcxNjA2OA==" width="900"></iframe><br />
+<br />
+
+      
+      (责任编辑：li)</td>
+    </tr>
+   </table>
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+
+<center></center>
+  
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg">
+   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',156)">
+    <div class="digg_act">顶一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+   <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',156)">
+    <div class="digg_act">踩一下</div>
+    <div class="digg_num">(0)</div>
+    <div class="digg_percent">
+     <div class="digg_percent_bar"><span style="width:0%"></span></div>
+     <div class="digg_percent_num">0%</div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" type="text/javascript">getDigg(156);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href='/a/softweihu/2017/0803/153.html'>2015年全国计算等级考试三级网络技术真题及答案</a> </li>
+     <li>下一篇：<a href='/a/softweihu/2017/1105/157.html'>三级网络技术第1章2.1.1基础知识</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="/plus/stow.php?aid=156" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="/plus/erraddsave.php?aid=156&title=三级网络技术-前言" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="/plus/recommend.php?aid=156" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="#" onClick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+ </div>
+ <!-- /viewbox -->
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yODg4Ny81NDU3" class="container">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+<!--评论区注释-->
+ <!-- //AJAX评论区 -->
+ <!-- //主模板必须要引入/include/dedeajax2.js -->
+<!--
+<a name='postform'></a>
+<div class="mt1">
+		<dl class="tbox">
+			<dt>
+				<strong>发表评论</strong>
+				<span class="more"></span>
+			</dt>
+			<dd>
+				<div class="dede_comment_post">
+          <form action="#" method="post" name="feedback">
+          <input type="hidden" name="dopost" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="156" />
+          <input type="hidden" name="fid" id='feedbackfid' value="0" />
+          <div class="dcmp-title">
+						<small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small>
+					</div>
+					-->
+					<!-- /dcmp-title -->
+					<!--
+					<div class="dcmp-stand">
+						<strong>评价:</strong>
+							<input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu" /><label for="dcmp-stand-neu"><img src="/templets/default/images/cmt-neu.gif" />中立</label>
+							<input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good" /><label for="dcmp-stand-good"><img src="/templets/default/images/cmt-good.gif" />好评</label>
+							<input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad" /><label for="dcmp-stand-bad"><img src="/templets/default/images/cmt-bad.gif" />差评</label>
+					</div>
+					-->
+					<!-- /dcmp-stand -->
+					<!--
+                    <div class="clr"></div>
+                    <div class="dcmp-mood">
+						<strong>表情:</strong>
+						<ul>            
+								                   
+						</ul>
+					</div>
+					-->
+					<!-- /dcmp-mood -->
+					<!--
+					<div class="dcmp-content">
+						<textarea cols="60" name="msg" rows="5" class="ipt-txt"></textarea>
+					</div>
+					-->
+					<!-- /dcmp-content -->
+					<!--
+					<div class="dcmp-post">
+					-->
+					<!--未登陆-->
+					<!--
+							<div class="dcmp-userinfo" id="_ajax_feedback">
+								用户名:<input type="text" name="username" size="16" class="ipt-txt" style="text-transform: uppercase;"/>
+                                验证码:<input type="text" name="validate" size="4" class="ipt-txt" style="text-transform:uppercase;"/><img src= "/include/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src=this.src+\'?\'" title="点击我更换图片" alt="点击我更换图片" />
+                <input type="checkbox" name="notuser" id="dcmp-submit-guest" /><label for="dcmp-submit-guest" />匿名? </label>
+							</div>
+              
+							<div class="dcmp-submit">
+								<button type="button" onClick='PostComment()'>发表评论</button>
+							</div>
+						</div>
+        </form>
+				</div>
+			</dd>
+		</dl>
+	</div>
+	-->
+	<!-- //评论表单区结束 -->
+
+<!-- //评论内容区 -->
+<!--
+	<a name='commettop'></a>
+	<div class="mt1">
+			<dl class="tbox">
+				<dt>
+					<strong>最新评论</strong>
+					<span class="more"><a href="/plus/feedback.php?aid=156">进入详细评论页&gt;&gt;</a></span>
+				</dt>
+-->
+				<!-- //这两个ID的区块必须存在，否则JS会出错 -->
+				<dd id='commetcontentNew'></dd>
+				<dd id='commetcontent'></dd>
+				<!--
+			</dl>
+	</div>
+	-->
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language='javascript'>
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/plus/feedback_ajax.php?dopost=getlist&aid=156&page="+page);
+		DedeXHTTP = null;
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+		if(f.msg.value=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(f.msg.value.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+		
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '156');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', f.msg.value);
+		myajax.SendPost2('/plus/feedback_ajax.php');
+		f.msg.value = '';
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+}
+function quoteCommet(fid)
+{
+	document.feedback.fid.value = fid;
+}
+LoadCommets(1);
+</script><!-- //评论内容区结束 --> </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<!--
+<div class="pright"> 
+ <div class="pright">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <div id="contentRtPicAD" style="margin:10px auto"></div>
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class='light'><strong>推荐内容</strong></dt>
+    <dd class='light'>
+     <ul class="d4">
+      <li><a href="/a/softweihu/2017/1105/187.html">三级网络技术第8章 无线局域网设备</a>
+       <p>常用无线标准：蓝牙标准，Hiperlan 标准，IEEE802.11 标准 蓝牙软件...</p>
+      </li>
+<li><a href="/plus/view.php?aid=184">三级网络技术第7章路由器及其配置</a>
+       <p>...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/182.html">三级网络技术第7章路由器及其配置</a>
+       <p>...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/179.html">三级网络技术第6章 交换机及其配置</a>
+       <p>...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/177.html">三级网络技术第5章 局域网技术21</a>
+       <p>...</p>
+      </li>
+<li><a href="/a/softweihu/2017/1105/176.html">三级网络技术第5章 局域网技术20</a>
+       <p>...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  -->
+  <!-- /commend -->
+  <div class="pright">
+   <dl class="tbox">
+    <dt class='light'><strong>热点内容</strong></dt>
+    <dd class='light'>
+     <ul class="c1 ico2">
+      <li><a href="/a/softweihu/2017/1105/178.html">三级网络技术第6章 交换机</a></li><li><a href="/a/softweihu/2017/1105/179.html">三级网络技术第6章 交换机</a></li><li><a href="/a/softweihu/2017/1105/180.html">三级网络技术第6章 交换机</a></li><li><a href="/a/softweihu/2017/1105/182.html">三级网络技术第7章路由器</a></li><li><a href="/a/softweihu/2017/1105/181.html">三级网络技术第6章 交换机</a></li><li><a href="/a/softweihu/2017/1105/183.html">三级网络技术第7章路由器</a></li><li><a href="/plus/view.php?aid=184">三级网络技术第7章路由器</a></li><li><a href="/a/softweihu/2017/1105/185.html">三级网络技术第7章路由器</a></li><li><a href="/a/softweihu/2017/1105/186.html">三级网络技术第7章路由器</a></li><li><a href="/a/softweihu/2017/1105/187.html">三级网络技术第8章 无线局</a></li>
+     </ul>
+    </dd>
+   </dl>
+   </div>
+ <!-- /pright -->
+<div id="innerfooterAD2" style="margin:10px auto; width:726px"></div>
+<!--此处开始为增加的代码 实现返回顶部-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="dedecms.css">
+<style>
+body{
+	height:1000px;
+}
+.totop{
+	position:fixed;
+	right:300px;
+	bottom:50px;
+	display:block;
+	width:26px;
+	height:62px;
+	background:url(http://ooi7s4rfa.bkt.clouddn.com/rocket.png) no-repeat 0 0;
+	-webkit-transition: all 0.2s ease-in-out;
+}
+.totop:hover{
+	background:url(http://ooi7s4rfa.bkt.clouddn.com/rocket.png) no-repeat 0 -62px;
+}
+
+</style>
+<script type="text/javascript">
+	function gotoTop(acceleration,stime) {
+   acceleration = acceleration || 0.1;
+   stime = stime || 10;
+   var x1 = 0;
+   var y1 = 0;
+   var x2 = 0;
+   var y2 = 0;
+   var x3 = 0;
+   var y3 = 0; 
+   if (document.documentElement) {
+       x1 = document.documentElement.scrollLeft || 0;
+       y1 = document.documentElement.scrollTop || 0;
+   }
+   if (document.body) {
+       x2 = document.body.scrollLeft || 0;
+       y2 = document.body.scrollTop || 0;
+   }
+   var x3 = window.scrollX || 0;
+   var y3 = window.scrollY || 0;
+ 
+   var x = Math.max(x1, Math.max(x2, x3));
+   var y = Math.max(y1, Math.max(y2, y3));
+   var speeding = 1 + acceleration;
+   window.scrollTo(Math.floor(x / speeding), Math.floor(y / speeding));
+   if(x > 0 || y > 0) {
+       var run = "gotoTop(" + acceleration + ", " + stime + ")";
+       window.setTimeout(run, stime);
+   }
+}
+
+</script>
+<!--In The End-->
+</head>
+<!-- //底部模板 -->
+<body>
+<a href="#" onclick="gotoTop();return false;" class="totop"></a>
+<div class="footer w960 center mt1 clear">
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+	<div class="copyright">Copyright &学考网; 2017&nbsp;&nbsp;</div></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+</body>
+</html>
+<!-- Only has div-->
+<!-- /footer -->
+<script type="text/javascript">
+var contentRtPicAD2      = document.getElementById("contentRtPicAD2");
+var   stop      = contentRtPicAD2.offsetTop - 60,
+    docBody   = document.documentElement || document.body.parentNode || document.body,
+    hasOffset = window.pageYOffset !== undefined,
+    scrollTop;
+window.onscroll = function (e) {
+  // cross-browser compatible scrollTop.
+  scrollTop = hasOffset ? window.pageYOffset : docBody.scrollTop;
+
+  if (scrollTop >= stop) {
+    contentRtPicAD2.className = 'stick';
+  } else {
+    contentRtPicAD2.className = ''; 
+  }
+}
+</script>
+ <a style="position:relative; right:50px; top: 350px;"  target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=867560846&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:867560846:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+</body>
+</html>
